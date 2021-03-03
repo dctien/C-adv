@@ -53,7 +53,7 @@ void selectionsort(int *list, int n)
 
 int main()
 {
-    const int n=1000; 
+    const int n=10000; 
     double time_spent = 0.0;
     
     printf("So luong phan tu n= %d\n",n);
@@ -64,7 +64,7 @@ int main()
 	// divide by CLOCKS_PER_SEC to convert to seconds
 	time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 
-	printf("Sinh mang mat thoi gian la %f micro seconds\n", time_spent*1e6);
+	printf("Sinh mang mat thoi gian la %f micro seconds\n", time_spent);
 	
 	
     int *copy1, *copy2;

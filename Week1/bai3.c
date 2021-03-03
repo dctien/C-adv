@@ -88,6 +88,69 @@ int main(){
     const int n=10000; 
     double time_spent = 0.0;
 
+    printf("So luong phan tu n=%d\n",n);
+    printf("\nVoi sinh so ngau nhien khong trung lap\n");
+    clock_t begin = clock();
+    int *source = generateArray(n);
+    clock_t end = clock();
+    // calculate elapsed time by finding difference (end - begin) and
+	// divide by CLOCKS_PER_SEC to convert to seconds
+	time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+
+	printf("Sinh mang mat thoi gian la %f micro seconds\n", time_spent*1e6);
+	
+	
+    int *copy1, *copy2, *copy3, *copy4, *copy5;
+    
+    begin = clock();
+    copy1 = copyArray(source, n);
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Copy mang mat thoi gian la %f micro seconds\n", time_spent*1e6);
+    
+    copy2 = copyArray(source, n);
+    copy3 = copyArray(source, n);
+    copy4 = copyArray(source, n);
+    copy5 = copyArray(source, n);
+
+    begin = clock();
+    sort(copy3,0,n-1);
+    end = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Sap xep QuickSort 3-way partitioning mat thoi gian la %f micro seconds\n", time_spent*1e6);
+	
+//voi so ngau nhien trung lap
+    printf("\nVoi sinh so ngau nhien trung lap\n");
+    clock_t begin1 = clock();
+    int *source1 = generateArrayDuplicate(n);
+    clock_t end1 = clock();
+    // calculate elapsed time by finding difference (end - begin) and
+	// divide by CLOCKS_PER_SEC to convert to seconds
+	time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+
+	printf("Sinh mang mat thoi gian la %f micro seconds\n", time_spent*1e6);	
+    
+    begin1 = clock();
+    quicksort(copy4,0,n-1);
+    end1 = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Sap xep QuickSort 2-way partitioning mat thoi gian la %f micro seconds\n", time_spent*1e6);
+	
+    begin1 = clock();
+    sort(copy5,0,n-1);
+    end1 = clock();
+    time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
+    printf("Sap xep QuickSort 3-way partitioning mat thoi gian la %f micro seconds\n", time_spent*1e6);
+
+    // giai phong bo nho dong
+    free(copy1);
+    free(copy2);
+    free(copy3);
+    free(copy4);
+    free(copy5);
+    free(source);
+    free(source1);
+    return 0;
 }
 
 
